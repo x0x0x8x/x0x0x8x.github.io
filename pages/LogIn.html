@@ -3,16 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AhongHomePage</title>
+    <title>Ahong SignIn</title>
     <script>
-		var gl_str = "";
-		var gl_curStr = "";
-		var xhr = new XMLHttpRequest();
-		var key = "sk-jh4jgWMjfy6GK9Kjb1wkxbYK0ONmgm65O3xVK0VS1zpbp8Z7";
-		const endpoint = 'https://api.chatanywhere.com.cn/v1/chat/completions';
-		
-		
-					
         function handleButtonClick() {
 			document.getElementById('textOutput').value = "等待回复...";
             // 获取输入框的值
@@ -56,9 +48,17 @@
 		background: linear-gradient(to bottom right, red, blue);
 	}
 	
+	/* 设置子 div 元素为块级元素，使其换行显示 */
+    .parent-div div {
+		margin: 0 auto; /* 将左右外边距设置为自动，实现水平居中 */
+        display: block;
+        margin-bottom: 10px; /* 设置子 div 元素之间的下边距 */
+    }
+	
 	/* 设置外部容器为弹性布局，并将子元素水平和垂直居中 */
     .container {
         display: flex;
+		flex-wrap: wrap;
         justify-content: center; /* 水平居中 */
         align-items: center; /* 垂直居中 */
         width: auto; /* 设置容器宽度为自动调整 */
@@ -94,23 +94,16 @@
         font-weight: bold;
         color: white;
         text-align: center;
+		margin-right: 10px; /* 设置选项卡之间的右侧间距 */
+        padding: 10px; /* 设置选项卡的内边距 */
     }
 	
 	/* 设置链接样式 */
-    .registration-link {
+	.back-link {
         position: absolute;
 		font-size: 20px;
         top: 15px; /* 距离顶部的距离 */
-        right: 15px; /* 距离右侧的距离 */
-        text-decoration: none; /* 去除下划线 */
-        color: white; /* 链接文字颜色 */
-        font-weight: bold; /* 设置字体粗细 */
-    }
-	.signin-link {
-        position: absolute;
-		font-size: 20px;
-        top: 15px; /* 距离顶部的距离 */
-        right: 75px; /* 距离右侧的距离 */
+        left: 15px; /* 距离右侧的距离 */
         text-decoration: none; /* 去除下划线 */
         color: white; /* 链接文字颜色 */
         font-weight: bold; /* 设置字体粗细 */
@@ -118,30 +111,33 @@
 	
 
     /* 鼠标悬停时改变链接的颜色 */
-    .registration-link:hover {
-        color: rgba(0, 0, 0, 0.5); /* 设置颜色为黑色，透明度为 0.8 */
-    }
-	.signin-link:hover {
+	.back-link:hover {
         color: rgba(0, 0, 0, 0.5); /* 设置颜色为黑色，透明度为 0.8 */
     }
 </style>
 
-<!-- 添加用户注册页面的跳转链接 -->
-<a class="signin-link" href="pages/LogIn.html">登陆</a>
-<a class="registration-link" href="pages/signin.html">注册</a>
-<h1 class="Head">Hong AI</h1>
-<div class="container">
-<label class="subgraph" for="textInput">输入框：</label>
-<input type="text" id="textInput" placeholder="在这里输入文字">
+<h1 class="Head">用户登陆</h1>
 
-<button class="container"  onclick="handleButtonClick()">确定</button>
+<a class="back-link" href="../index.html">返回主页</a>
+
+<div class="container">
+    <div class="container">
+<label class="subgraph" for="textInput">用户名：</label>
+<input type="text" id="textInput" placeholder="">
 </div>
-<div  class="container">
-<textarea id="textOutput" readonly> </textarea>
+
+<div class="container">
+<label class="subgraph" for="textInput">密码：</label>
+<input type="text" id="textInput" placeholder="">
 </div>
-<div>
-<a href="pages/web1.html">测试用，不要点</a>
+
+<div class="container">
+<button class="container"  onclick="handleButtonClick()">登录</button>
 </div>
+</div>
+
+
+
 
 </body>
 </html>
