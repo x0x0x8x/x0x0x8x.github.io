@@ -5,21 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ahong SignIn</title>
     <script>
-		function blobToString(blob) {
-		  return new Promise((resolve, reject) => {
-			const reader = new FileReader();
-			reader.onload = () => {
-			  resolve(reader.result);
-			};
-			reader.onerror = reject;
-			reader.readAsText(blob);
-		  });
-		}
-
 	
 		function sendHost(cmd, data){
 			// 创建 WebSocket 对象，指定服务器地址
-			socket = new WebSocket("ws://127.0.0.1:9309");
+			socket = new WebSocket("ws://192.168.1.107:9309");
 			// 监听连接建立事件
 			socket.addEventListener("open", (event) => {
 			  //console.log("WebSocket connection opened:", event);
@@ -67,7 +56,6 @@
 			
 			
 		}
-	
 		function isValidEmail(email) {
 			// 使用正则表达式校验邮箱地址格式
 			const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -110,9 +98,9 @@
 			const email = document.getElementById('email').value;
 			const pw1 = document.getElementById('pw1').value;
 			const pw2 = document.getElementById('pw2').value;
-			//if(!validateRegistration(username, email, pw1, pw2)){
-			//	return;
-			//}
+			if(!validateRegistration(username, email, pw1, pw2)){
+				return;
+			}
 			
 			const userInputArray = [username, email, pw1, pw2];
 			
